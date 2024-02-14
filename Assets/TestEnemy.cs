@@ -17,14 +17,13 @@ public class TestEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
     void OnMove(InputValue movementValue)
     {
         movementVector = movementValue.Get<Vector2>();
-
+        Debug.Log(movementValue.Get());
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
