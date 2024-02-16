@@ -8,6 +8,7 @@ public class TestEnemy : MonoBehaviour
 {
 
     private Rigidbody2D rb;
+    private Animator anim;
     private Vector2 movementVector;
     private float movementX;
     private float movementY;
@@ -17,6 +18,7 @@ public class TestEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,15 @@ public class TestEnemy : MonoBehaviour
         Debug.Log(movementValue.Get());
         movementX = movementVector.x;
         movementY = movementVector.y;
+        if(movementY > 0)
+        {
+            anim.SetBool("MovingDown", false);
+            anim.SetBool("MoveUp", true);
+        } else if(movementY < 0)
+        {
+            anim.SetBool("MovingDown", true);
+            anim.SetBool("MoveUp", false);
+        }
     }
 
     void FixedUpdate()
