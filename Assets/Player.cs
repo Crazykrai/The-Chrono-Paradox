@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
     private Vector3 inputVector;
     public SpriteRenderer sr;
     private HealthBarController hbc;
+    private bool hitboxActive = false;
+    public GameObject hitboxPoint;
+    public GameObject swordHitbox;
+    private GameObject currentSwordHit;
+    private BoxCollider2D collider2D;
+
     private void Start()
     {
        sr = GetComponent<SpriteRenderer>();
@@ -36,6 +42,17 @@ public class Player : MonoBehaviour
             sr.flipX = true;
         }
 
+
+        if(animator.GetBool("click"))
+        {
+            if(!hitboxActive)
+            {
+                hitboxActive = true;
+                currentSwordHit = Instantiate(swordHitbox, hitboxPoint.transform);
+                
+                //swordHitbox.transform.position.Set(swordHitbox.transform.position.x,hitboxPoint.transform.position.y,swordHitbox.transform.position.z);
+            }
+        } 
     }
     void OnMove(InputValue value)
     {
@@ -44,7 +61,19 @@ public class Player : MonoBehaviour
 
     void OnFire()
     {
-        animator.SetTrigger("click");
-            
+        print("click!");
+        if(!animator.GetBool("melee"))
+        {
+            animator.SetTrigger("click");
+        }
+        
+        animator.SetBool("melee", true);
+    }
+
+    public void meleeComplete()
+    {
+        animator.SetBool("melee", false);
+        Destroy(currentSwordHit);
+        hitboxActive = false;
     }
 }
