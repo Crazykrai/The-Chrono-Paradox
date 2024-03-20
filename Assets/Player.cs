@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     private GameObject currentSwordHit;
     private BoxCollider2D collider2D;
 
+    bool isInvulnerable = false;
+    float invulnerabilityDuration = 2.0f; // Adjust this as needed
+    float invulnerabilityTimer = 0.0f;
+
     private void Start()
     {
        sr = GetComponent<SpriteRenderer>();
@@ -28,7 +32,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        animator.SetFloat("speed", (Mathf.Abs(moveInput.y)+Mathf.Abs(moveInput.x)/2));
+        animator.SetFloat("speed", (Mathf.Abs(moveInput.y) + Mathf.Abs(moveInput.x) / 2));
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         inputVector = mousePosition - rb.transform.position;
@@ -42,18 +46,35 @@ public class Player : MonoBehaviour
             sr.flipX = true;
         }
 
-
-        if(animator.GetBool("click"))
+        if (animator.GetBool("click"))
         {
-            if(!hitboxActive)
+            if (!hitboxActive)
             {
                 hitboxActive = true;
                 currentSwordHit = Instantiate(swordHitbox, hitboxPoint.transform);
-                
+
                 //swordHitbox.transform.position.Set(swordHitbox.transform.position.x,hitboxPoint.transform.position.y,swordHitbox.transform.position.z);
             }
-        } 
+        }
+
+        if (animator.GetFloat("HP") == 0)
+        {
+            print("move locked");
+            moveSpeed = 0f;
+        }
+
+        if (isInvulnerable)
+        {
+            invulnerabilityTimer -= Time.deltaTime;
+
+            // If invulnerability period is over, make the player vulnerable again
+            if (invulnerabilityTimer <= 0.0f)
+            {
+                isInvulnerable = false;
+            }
+        }
     }
+
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
