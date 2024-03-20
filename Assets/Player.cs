@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D collider2D;
 
     bool isInvulnerable = false;
-    float invulnerabilityDuration = 2.0f; // Adjust this as needed
+    float invulnerabilityDuration = 1.0f; // Adjust this as needed
     float invulnerabilityTimer = 0.0f;
 
     private void Start()
@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
 
         if (animator.GetFloat("HP") == 0)
         {
-            print("move locked");
             moveSpeed = 0f;
         }
 

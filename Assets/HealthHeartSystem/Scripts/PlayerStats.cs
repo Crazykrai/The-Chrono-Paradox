@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour
 
     // Invulnerability fields
     bool isInvulnerable = false;
-    float invulnerabilityDuration = 1.0f; // Adjust this to change how long player has iframes 
+    float invulnerabilityDuration = 0.5f; // Adjust this to change how long player has iframes 
     float invulnerabilityTimer = 0.0f;
     private bool hasTriggeredAnimation = false;
 

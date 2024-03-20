@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SpikeTileDamage : MonoBehaviour
+public class tileDetection : MonoBehaviour
 {
     public Tilemap spikeTilemap;
     public Sprite spikeTileSprite;
