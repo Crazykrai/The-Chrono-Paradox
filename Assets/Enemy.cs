@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private float movementX;
     private float movementY;
     public float speed;
+    public GameObject playerCharacter;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,33 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movementVector * speed * Time.fixedDeltaTime);
+        Vector2 playerDirection;
+        
+        if(playerCharacter.transform.position.y < gameObject.transform.position.y)
+        {
+            playerDirection.y = -1;
+        } else
+        {
+            playerDirection.y = 1;
+        }
+
+        if (playerCharacter.transform.position.x < gameObject.transform.position.x)
+        {
+            playerDirection.x = -1;
+        }
+        else
+        {
+            playerDirection.x = 1;
+        }
+
+        Vector2 playerDistance;
+        playerDistance.x = (playerCharacter.transform.position.x - gameObject.transform.position.x);
+        playerDistance.y = (playerCharacter.transform.position.y - gameObject.transform.position.y);
+
+        if(playerDistance.magnitude > 1)
+        {
+            rb.MovePosition(rb.position + playerDirection * speed * Time.fixedDeltaTime);
+        }
     }
 
     private void OnDestroy()
