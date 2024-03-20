@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TestEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     private Rigidbody2D rb;
@@ -16,6 +16,7 @@ public class TestEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnemyManager.instance.enemies.Add(this);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,5 +32,10 @@ public class TestEnemy : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movementVector * speed * Time.fixedDeltaTime);
+    }
+
+    private void OnDestroy()
+    {
+        EnemyManager.instance.enemies.Remove(this);
     }
 }
