@@ -17,8 +17,13 @@ public class Life : MonoBehaviour
     {
         if (health <= 0)
         {
-            anim.SetTrigger("killed");
-            //Destroy(gameObject);
+            if(anim)
+            {
+                anim.SetTrigger("killed");
+            } else
+            {
+                Destroy(gameObject);
+            }
 
         }
     }

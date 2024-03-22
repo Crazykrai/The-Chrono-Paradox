@@ -37,22 +37,26 @@ public class Player : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         inputVector = mousePosition - rb.transform.position;
         inputVector = inputVector.normalized;
-        if (mousePosition.x > rb.position.x)
+        if(!hitboxActive)
         {
-            sr.flipX = false;
+            if (mousePosition.x > rb.position.x)
+            {
+                sr.flipX = false;
+            }
+            else
+            {
+                sr.flipX = true;
+            }
         }
-        else
-        {
-            sr.flipX = true;
-        }
-
+        
+        
         if (animator.GetBool("click"))
         {
             if (!hitboxActive)
             {
                 hitboxActive = true;
                 currentSwordHit = Instantiate(swordHitbox, hitboxPoint.transform);
-
+                if(sr.flipX.Equals(true)) currentSwordHit.transform.Rotate(new Vector3(0, 180, 0));
                 //swordHitbox.transform.position.Set(swordHitbox.transform.position.x,hitboxPoint.transform.position.y,swordHitbox.transform.position.z);
             }
         }

@@ -7,7 +7,7 @@ public class SwordAttack : MonoBehaviour
 
     //public static SwordAttack instance;
     public Sprite player;
-    private float damage = 5;
+    public float damage = 5;
 
     private void Awake()
     {
