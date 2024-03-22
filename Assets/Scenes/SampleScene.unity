@@ -2320,23 +2320,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-
-    
-          
-            
-    
-
-          
-          Expand Down
-          
-            
-    
-
-          
-          Expand Up
-    
-    @@ -2453,7 +2453,7 @@ BoxCollider2D:
-  
   m_DrawMode: 0
   m_Size: {x: 1.8125, y: 1.875}
   m_AdaptiveModeThreshold: 0.5
@@ -2474,23 +2457,6 @@ BoxCollider2D:
     newSize: {x: 1.8125, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
-
-    
-          
-            
-    
-
-          
-          Expand Down
-          
-            
-    
-
-          
-          Expand Up
-    
-    @@ -2908,8 +2908,8 @@ BoxCollider2D:
-  
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -2947,17 +2913,6 @@ BoxCollider2D:
     newSize: {x: 0.48, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -2926,14 +2926,14 @@ Rigidbody2D:
-  
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -2982,17 +2937,6 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
